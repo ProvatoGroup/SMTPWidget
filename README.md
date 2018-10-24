@@ -1,1 +1,1 @@
-Install this YARN file in to your Visual Studio Sitefinity project. See notes in the code.
+
