@@ -1,0 +1,48 @@
+﻿@using Telerik.Sitefinity.Frontend.Mvc.Helpers
+@using Telerik.Sitefinity.Modules.Pages
+@using SitefinityWebApp.Mvc.Models
+
+@model SMTPWidgetModel
+
+@Html.Script(ScriptRef.JQuery)
+
+<div class="sfDashboardWidgetWrp">
+    <h2 class="sfBlack">SMTP Updater</h2>
+    <div class="dataWrapper">
+        <h1>
+            <!--Can Write this HTML however you want to match your styling or use custom CSS class-->
+            @Html.EditorForModel()
+            <button id="SaveSMTPSettings" name="SaveSMTPSettings">Save</button>
+        </h1>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#SaveSMTPSettings").click(function (e) {
+            e.preventDefault();
+
+            //These are the fields I chose. You can add more and adjust the models and functions as needed
+            var jsonToPost = {
+                DefaultSenderEmailAddress: $("#DefaultSenderEmailAddress").val(),
+                Domain: $("#Domain").val(),
+                EnableSSL: $("#EnableSSL").val(),
+                Host: $("#Host").val(),
+                UserName: $("#UserName").val(),
+                Password: $("#Password").val(),
+                Port: $("#Port").val()
+            };
+
+            $.post('/SaveSMTPSettings', jsonToPost) //You can choose your own route if you want by configuring the Controller on the backend
+            .done(function (data, textStatus, jqXHR) {
+                alert("Saved"); //Show alert or show custom label here if you choose.
+            })
+            .fail(function (jqXHR, textStatus, errorThrown) {
+                alert("Fail");
+                console.log("xhr: " + JSON.stringify(jqXHR));
+                console.log("status: " + textStatus);
+                console.log("error: " + errorThrown);
+            });
+        });
+    });
+</script>

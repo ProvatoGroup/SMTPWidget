@@ -1,0 +1,10 @@
+{
+  "name": "SMTPWidget",
+  "version": "1.0.0",
+  "description": "Sitefinity SMTP Update Shortcut Widget",
+  "keywords": ["Sitefinity", "System", "SMTP", "Dashboard", "Provato"],
+  "homepage": "https://www.theprovatogroup.com",
+  "author": "The Provato Group",
+  "license": "MIT",
+  "files": ["Mvc/Controllers/SMTPWidgetController.cs", "Mvc/Models/SMTPWidgetModel.cs", "Mvc/Views/SMTPWidget/Index.cshtml"]
+}
